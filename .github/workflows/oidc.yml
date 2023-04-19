@@ -22,9 +22,15 @@ jobs:
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Echo out a GitHub Actions Secret to the logs
+        run: |
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.DEVELOPER_NAME }}
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo ${{secrets.DEVELOPER_NAME}} | sed 's/./& /g'
+
       - name: 'Run Azure CLI commands'
         run: |
-            echo ${{secrets.DEVELOPER_NAME}}
             az account show
             az group list
             pwd
