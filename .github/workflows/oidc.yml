@@ -24,6 +24,7 @@ jobs:
 
       - name: 'Run Azure CLI commands'
         run: |
+            echo ${{secrets.DEVELOPER_NAME}}
             az account show
             az group list
             pwd
